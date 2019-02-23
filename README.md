@@ -5,7 +5,7 @@
 * Miles Lucey
 ## Data Sources
 * one listings.csv file that contains AirBnB listing information and AirBnB host information
-* one calendar.csv file that contains property availability information throughout
+* one calendar.csv file that contains property availability information throughout the year
 * one reviews.csv file that contains AirBnB property reviews information
 ## Where We Got the Data
 * Kaggle: https://www.kaggle.com/airbnb/seattle
