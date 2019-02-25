@@ -83,7 +83,9 @@ SELECT
     airbnb_hosts.host_response_rate AS "Host Response Rate"
 FROM
 	listings
-JOIN
+LEFT JOIN
 	airbnb_hosts
 ON
 	listings.host_id = airbnb_hosts.host_id;
+    
+    
