@@ -128,10 +128,10 @@
    ~~~~
 ## Load
 ### SQL -- Creating the Schema
-* We chose AirBnB data because we are interested in studying data from Bay Area companies that are market disrupters. Additionally, we are all interested in studying the "sharing economy". 
-* This analysis creates a schema consisting of four tables (listings, hosts, calendar, and reviews). We think this is the best way to divide the data because each table has its own unique focus, each table cannot really be divided into smaller tables (i.e. smaller tables that are equally distinct and have fewer rows than before), and it is an intuitive way of dividing information for people who may use the data in the future.
-* We chose a relational database structure because we wanted our data to have a strict structure and to be very consistent. We also wanted the database to be easy to update if needed. Lastly, we wanted to minimize redundancy and to make sure not to have multiple columns displaying the same information.
-* In MySQL, we followed the steps below:
+* We choose AirBnB data because we are interested in studying data from Bay Area companies that are market disrupters. Additionally, we are interested in studying the sharing economy, an economy in which AirBnB is a key player. 
+* This analysis creates a schema consisting of four tables (listings, hosts, property availability, and property reviews). We think this is the best way to divide the data because each table has its own unique focus, each table cannot really be divided into smaller tables (i.e. tables that are equally distinct and have fewer rows than before), and it is an intuitive way of dividing information for people who may use the data in the future.
+* We choose a relational database structure because we want the data to have a strict structure and to be very consistent across all columns. We also want the database to be easy to update if needed. Lastly, we want to minimize redundancy and to make sure to not have multiple columns displaying the same information.
+* In MySQL, we follow the following steps to create the schema:
 	* Use a SQL script to establish the database:
   ~~~~sql
   CREATE DATABASE IF NOT EXISTS seattle_airbnb_db;
