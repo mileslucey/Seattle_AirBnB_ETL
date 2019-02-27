@@ -1,16 +1,16 @@
 # Seattle AirBnB ETL Project
 ## Background Information
-### Team Members
+#### Team Members
 * Shannon Chang
 * Madeleine Merken
 * Miles Lucey
-### Data Source
+#### Data Source
 * Kaggle: https://www.kaggle.com/airbnb/seattle
-### Data Files
+#### Data Files
 * One listings.csv file that contains AirBnB listing information and AirBnB host information
 * One calendar.csv file that contains property availability information throughout the year
 * One reviews.csv file that contains AirBnB property reviews information
-### Idea for Relational Database Schema
+#### Idea for Relational Database Schema
 * Four tables:
     * One table for listings information from the listings.csv file
     * One table with hosts information from the listings.csv file
@@ -54,7 +54,7 @@
      ~~~~python
    review_df = reviews_df[['review_id', "listing_id", "review_date", "reviewer_id", "reviewer_name", "comments"]].copy()
      ~~~~
-### Cleaning
+#### Cleaning
 * All four dataframes are cleaned using the following commands:
    1. "drop_duplicates" to remove all duplicate entries in each dataframe
    2. ".replace" to remove all symbols from numerical columns (e.g. $,%,',', etc.)
@@ -127,7 +127,7 @@
    review_df["review_date"] = pd.to_datetime(review_df["review_date"])
    ~~~~
 ## Load
-### SQL -- Creating the Schema
+#### SQL -- Creating the Schema
 * We choose AirBnB data because we are interested in studying data from Bay Area companies that are market disrupters. Additionally, we are interested in studying the sharing economy, an economy in which AirBnB is a key player. 
 * This analysis creates a schema consisting of four tables (listings, hosts, property availability, and property reviews). We think this is the best way to divide the data because each table has its own unique focus, each table cannot really be divided into smaller tables (i.e. tables that are equally distinct and have fewer rows than before), and it is an intuitive way of dividing information for people who may use the data in the future.
 * We choose a relational database structure because we want the data to have a strict structure and to be very consistent across all columns. We also want the database to be easy to update if needed. Lastly, we want to minimize redundancy and to make sure to not have multiple columns displaying the same information.
@@ -247,7 +247,7 @@
 	);
    ~~~~
 
-### Python -- Connecting to MySQL database and adding in the data
+#### Python -- Connecting to MySQL database and adding in the data
 * A MySQL database connection is created and an engine is created in Python (**if reproducing, make sure to add in the appropriate computer password**):
    ~~~~python
    rds_connection_string = "root:<PASSWORD HERE>@127.0.0.1/seattle_airbnb_db"
