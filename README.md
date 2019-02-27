@@ -55,28 +55,31 @@
    * CREATE DATABASE seattle_airbnb_db;
    * USE seattle_airbnb_db;
 * In the AirBnB database, create the four separate tables:
-   1. CREATE TABLE airbnb_hosts(
+   1. Hosts table
+   ~~~~sql
+   CREATE TABLE airbnb_hosts(
 	host_id INT,
-    host_name VARCHAR(150),
-    host_since DATE,
-    host_location VARCHAR(150),
-    host_response_time VARCHAR(200),
-    host_response_rate INT,
-    host_acceptance_rate INT,
-    host_is_superhost BOOLEAN,
-    host_neighbourhood VARCHAR(100),
-    host_listings_count INT,
-    host_has_profile_pic BOOLEAN,
-    host_identity_verified BOOLEAN,
-    PRIMARY KEY(host_id)
+    	host_name VARCHAR(150),
+    	host_since DATE,
+    	host_location VARCHAR(150),
+    	host_response_time VARCHAR(200),
+    	host_response_rate INT,
+    	host_acceptance_rate INT,
+    	host_is_superhost BOOLEAN,
+    	host_neighbourhood VARCHAR(100),
+    	host_listings_count INT,
+    	host_has_profile_pic BOOLEAN,
+    	host_identity_verified BOOLEAN,
+    	PRIMARY KEY(host_id)
 );
+~~~~
    2. CREATE TABLE listings(
 	id INT,
-    listing_name VARCHAR(100),
-    street VARCHAR(300),
-    neighbourhood_cleansed VARCHAR(150),
-    neighbourhood_group_cleansed VARCHAR(150),
-    city VARCHAR(150),
+    	listing_name VARCHAR(100),
+    	street VARCHAR(300),
+    	neighbourhood_cleansed VARCHAR(150),
+    	neighbourhood_group_cleansed VARCHAR(150),
+    	city VARCHAR(150),
     state VARCHAR(5),
     zipcode VARCHAR(20),
     latitude FLOAT,
