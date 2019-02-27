@@ -64,10 +64,12 @@
    4. "to_datetime" to convert columns to datetime format that were being registered as strings
    5. "to_numeric" to convert columns to numbers that were being registered as strings
 ## Load
-### SQL
+### SQL -- Creating the Schema
 * Use a SQL script to establish the database:
-   * CREATE DATABASE seattle_airbnb_db;
-   * USE seattle_airbnb_db;
+  ~~~~sql
+  CREATE DATABASE seattle_airbnb_db;
+  USE seattle_airbnb_db;
+  ~~~~
 * In the AirBnB database, create the four separate tables:
    
 	1. Hosts table
@@ -147,16 +149,16 @@
     	FOREIGN KEY (host_id) REFERENCES airbnb_hosts(host_id) ON DELETE CASCADE 
 	);
    ~~~~
-	
 	3. Calendar table
+   ~~~~sql
+   	INSERT CODE HERE
+   ~~~~
 	4. Reviews table
+   ~~~~sql
+   	INSERT CODE HERE
+   ~~~~
 
-	2. Listings table
-	
-
-
-
-### Python
+### Python -- Connecting to MySQL database and adding in the data
 * A MYSQL database connection is created and an engine is created in Python:
    ~~~~python
    rds_connection_string = "root:<PASSWORD HERE>@127.0.0.1/seattle_airbnb_db"
