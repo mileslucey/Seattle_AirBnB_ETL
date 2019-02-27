@@ -58,7 +58,7 @@
 * All four dataframes are cleaned using the following commands:
    1. "drop_duplicates" to remove all duplicate entries in each dataframe
    2. ".replace" to remove all symbols from numerical columns (e.g. $,%,',', etc.)
-      * This is because some of the dataframe columns were being registered as strings rather than as numbers
+      * This is because some of the dataframe columns are initially registered as strings rather than as numbers
    3. ".replace. to replace "t" and "f" entries with the booleans "True" and False"
    4. "to_datetime" to convert columns to datetime format that were being registered as strings
    5. "to_numeric" to convert columns to numbers that were being registered as strings
