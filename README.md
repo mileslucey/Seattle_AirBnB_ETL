@@ -23,11 +23,15 @@
 ## Extract
 * Python is used to extract data from four CSV files (each in the "Resources" folder).
 1. listings.csv
-   * listing_host_csv = "Resources/listings.csv"
-   * listing_host_df = pd.read_csv(listing_host_csv,encoding="utf8")
+   ~~~~python
+   listing_host_csv = "Resources/listings.csv"
+   listing_host_df = pd.read_csv(listing_host_csv,encoding="utf8")
+   ~~~~
 2. calendar.csv
-   * calendar_csv = "Resources/calendar.csv"
-   * calendar_df = pd.read_csv(calendar_csv,encoding="utf8")
+   ~~~~python	
+   calendar_csv = "Resources/calendar.csv"
+   calendar_df = pd.read_csv(calendar_csv,encoding="utf8")
+   ~~~~
 3. reviews.csv
    * reviews_csv = "Resources/reviews.csv"
    * reviews_df = pd.read_csv(reviews_csv,encoding="utf8")
@@ -55,7 +59,8 @@
    * CREATE DATABASE seattle_airbnb_db;
    * USE seattle_airbnb_db;
 * In the AirBnB database, create the four separate tables:
-   	1. Hosts table
+   
+	1. Hosts table
    ~~~~sql
    CREATE TABLE airbnb_hosts(
 	host_id INT,
@@ -72,7 +77,8 @@
     	host_identity_verified BOOLEAN,
     	PRIMARY KEY(host_id)
 	);
-~~~~		
+~~~~
+
 	2. Listings table
 	
 	~~~~sql
