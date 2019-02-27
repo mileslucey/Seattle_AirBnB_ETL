@@ -217,7 +217,7 @@
    ~~~~
 
 ### Python -- Connecting to MySQL database and adding in the data
-* A MYSQL database connection is created and an engine is created in Python:
+* A MySQL database connection is created and an engine is created in Python:
    ~~~~python
    rds_connection_string = "root:<PASSWORD HERE>@127.0.0.1/seattle_airbnb_db"
    engine = create_engine(f"mysql://{rds_connection_string}?charset=utf8", encoding = "utf8")
