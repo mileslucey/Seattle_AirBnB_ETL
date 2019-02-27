@@ -46,11 +46,15 @@
    * hosts dataframe
       ~~~~python
       host_df = listing_host_df[["host_id","host_name","host_since","host_location","host_response_time","host_response_rate","host_acceptance_rate","host_is_superhost","host_neighbourhood","host_listings_count","host_has_profile_pic","host_identity_verified"]].copy()
-      ~~~~
+     ~~~~
 * Python is used to create the calendar dataframe:
-   * INSERT CODE HERE
+     ~~~~python
+   INSERT CODE HERE
+     ~~~~
 * Python is used to create the reviews dataframe:
-   * INSERT CODE HERE
+     ~~~~python
+   INSERT CODE HERE
+     ~~~~
 ### Cleaning
 * All four dataframes are cleaned using the following commands:
    1. "drop_duplicates" to remove all duplicate entries in each dataframe
