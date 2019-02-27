@@ -20,4 +20,15 @@
     * Listings and hosts tables linked together by host_id
     * Listings and availability tables linked together by listing_id
     * Listings and reviews tables linked together by listing_id
-
+## Extract
+* Python is used to extract data from four CSV files (each in the "Resources" folder).
+1. listings.csv
+   * listing_host_csv = "Resources/listings.csv"
+   * listing_host_df = pd.read_csv(listing_host_csv,encoding="utf8")
+2. calendar.csv
+   * calendar_csv = "Resources/calendar.csv"
+   * calendar_df = pd.read_csv(calendar_csv,encoding="utf8")
+3. reviews.csv
+   * reviews_csv = "Resources/reviews.csv"
+   * reviews_df = pd.read_csv(reviews_csv,encoding="utf8")
+   
