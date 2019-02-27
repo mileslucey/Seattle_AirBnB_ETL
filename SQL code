@@ -1,0 +1,8 @@
+CREATE TABLE airbnb_reviews(
+	listing_id INT,
+    date DATE,
+    reviewer_id INT,
+    reviewer_name VARCHAR(100),
+    comments VARCHAR(100),
+    PRIMARY KEY(review_id)
+);
