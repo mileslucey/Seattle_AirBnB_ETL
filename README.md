@@ -34,8 +34,8 @@
    ~~~~
 3. reviews.csv
    ~~~~python
-   * reviews_csv = "Resources/reviews.csv"
-   * reviews_df = pd.read_csv(reviews_csv,encoding="utf8")
+   reviews_csv = "Resources/reviews.csv"
+   reviews_df = pd.read_csv(reviews_csv,encoding="utf8")
    ~~~~
 ## Transform 
 * Python is used to separate the listing_host_df into two dataframes; One for listings and one for host information:
@@ -87,11 +87,10 @@
     	host_identity_verified BOOLEAN,
     	PRIMARY KEY(host_id)
 	);
-~~~~
+   ~~~~
 
 	2. Listings table
-	
-	~~~~sql
+   ~~~sql
    CREATE TABLE listings(
 	id INT,
     	listing_name VARCHAR(100),
@@ -147,7 +146,7 @@
     	PRIMARY KEY (id),
     	FOREIGN KEY (host_id) REFERENCES airbnb_hosts(host_id) ON DELETE CASCADE 
 	);
-~~~~
+   ~~~~
 	
 	3. Calendar table
 	4. Reviews table
