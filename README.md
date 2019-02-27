@@ -55,7 +55,7 @@
    * CREATE DATABASE seattle_airbnb_db;
    * USE seattle_airbnb_db;
 * In the AirBnB database, create the four separate tables:
-   1. Hosts table
+   	1. Hosts table
    ~~~~sql
    CREATE TABLE airbnb_hosts(
 	host_id INT,
@@ -72,9 +72,10 @@
     	host_identity_verified BOOLEAN,
     	PRIMARY KEY(host_id)
 	);
-~~~~
-   2. Listings table
-   ~~~~sql
+~~~~		
+	2. Listings table
+	
+	~~~~sql
    CREATE TABLE listings(
 	id INT,
     	listing_name VARCHAR(100),
@@ -131,6 +132,13 @@
     	FOREIGN KEY (host_id) REFERENCES airbnb_hosts(host_id) ON DELETE CASCADE 
 	);
 ~~~~
+	
+	3. Calendar table
+	4. Reviews table
+
+	2. Listings table
+	
+
 
 
 ### Python
