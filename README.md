@@ -31,13 +31,13 @@
    ~~~~
 2. calendar.csv
    ~~~~python	
-   calendar_csv = "Resources/calendar.csv"
-   calendar_df = pd.read_csv(calendar_csv,encoding="utf8")
+   availability_file = "Resources/calendar.csv"
+   availability_df = pd.read_csv(availability_file,encoding="utf8")
    ~~~~
 3. reviews.csv
    ~~~~python
-   reviews_csv = "Resources/reviews.csv"
-   reviews_df = pd.read_csv(reviews_csv,encoding="utf8")
+   reviews_file = "Resources/reviews.csv"
+   reviews_df = pd.read_csv(reviews_file,encoding="utf8")
    ~~~~
 ## Transform 
 * Python code to separate the listing_host_df into two dataframes; One dataframe for listings and one dataframe for host information:
@@ -49,13 +49,10 @@
       ~~~~python
       host_df = listing_host_df[["host_id","host_name","host_since","host_location","host_response_time","host_response_rate","host_acceptance_rate","host_is_superhost","host_neighbourhood","host_listings_count","host_has_profile_pic","host_identity_verified"]].copy()
      ~~~~
-* Python code to create the calendar dataframe:
-     ~~~~python
-   INSERT CODE HERE
-     ~~~~
+* All columns in the calendar.csv file are used in the property availability dataframe
 * Python code to create the reviews dataframe:
      ~~~~python
-   INSERT CODE HERE
+   review_df = reviews_df[['review_id', "listing_id", "review_date", "reviewer_id", "reviewer_name", "comments"]].copy()
      ~~~~
 ### Cleaning
 * All four dataframes are cleaned using the following commands:
@@ -112,11 +109,22 @@
    host_df["host_response_rate"] = pd.to_numeric(host_df["host_response_rate"])
    host_df["host_acceptance_rate"] = pd.to_numeric(host_df["host_acceptance_rate"])
    ~~~~
-   3. calendar dataframe:
+   3. property availability dataframe:
    ~~~~python
+   # Convert columns to datetime format
+   availability_df["available_date"]=pd.to_datetime(availability_df["available_date"])
+   
+   # Replace columns designated as "t" or "f" as the "True" or "False" booleans
+   availability_df["available"].replace(["t","f"], [True,False], inplace=True)
+   
+   # Convert all currency columns to numeric values
+   availability_df["price"] = availability_df["price"].replace({'\$': '', ',': ''}, regex=True)
+   availability_df["price"] = pd.to_numeric(availability_df["price"])
    ~~~~
    4. reviews dataframe:
    ~~~~python
+   # Convert columns to datetime format
+   review_df["review_date"] = pd.to_datetime(review_df["review_date"])
    ~~~~
 ## Load
 ### SQL -- Creating the Schema
@@ -133,7 +141,7 @@
 	1. Hosts table
    ~~~~sql
    CREATE TABLE airbnb_hosts(
-	host_id INT,
+    	host_id INT,
     	host_name VARCHAR(150),
     	host_since DATE,
     	host_location VARCHAR(150),
@@ -152,8 +160,8 @@
 	2. Listings table
    ~~~sql
    CREATE TABLE listings(
-	id INT,
-    	listing_name VARCHAR(100),
+    	id INT,
+   	 listing_name VARCHAR(100),
     	street VARCHAR(300),
     	neighbourhood_cleansed VARCHAR(150),
     	neighbourhood_group_cleansed VARCHAR(150),
@@ -203,17 +211,34 @@
     	require_guest_phone_verification BOOLEAN,
     	reviews_per_month FlOAT,
     	host_id INT,
-    	PRIMARY KEY (id),
-    	FOREIGN KEY (host_id) REFERENCES airbnb_hosts(host_id) ON DELETE CASCADE 
+    	PRIMARY KEY(id),
+    	FOREIGN KEY(host_id) REFERENCES airbnb_hosts(host_id) ON DELETE CASCADE
 	);
    ~~~~
-	3. Calendar table
+	3. Property availability table
    ~~~~sql
-   	INSERT CODE HERE
+   CREATE TABLE property_availability(
+    	id INT NOT NULL AUTO_INCREMENT,
+    	listing_id INT,
+    	available_date DATE,
+    	available BOOLEAN,
+    	price FLOAT,
+    	PRIMARY KEY(id),
+    	FOREIGN KEY(listing_id) REFERENCES listings(id) ON DELETE CASCADE
+	);
    ~~~~
-	4. Reviews table
+	4. Property reviews table
    ~~~~sql
-   	INSERT CODE HERE
+   CREATE TABLE property_reviews(
+   	review_id INT,
+   	listing_id INT,
+   	review_date DATE,
+   	reviewer_id INT,
+   	reviewer_name VARCHAR(100),
+   	comments MEDIUMTEXT,
+   	PRIMARY KEY(review_id),
+   	FOREIGN KEY(listing_id) REFERENCES listings(id) ON DELETE CASCADE
+	);
    ~~~~
 
 ### Python -- Connecting to MySQL database and adding in the data
@@ -224,7 +249,8 @@
    ~~~~
 * The engine is used to populate all the SQL tables
    ~~~~python
-   host_df.to_sql(name="airbnb_hosts",con=engine,if_exists="append",index=False)
-   listing_df.to_sql(name="listings",con=engine,if_exists="append",index=False)
-   ADD THE REST OF CODE LATER
+   host_df.to_sql(name="airbnb_hosts",con=engine,if_exists="append",index=False,chunksize=2000)
+   listing_df.to_sql(name="listings",con=engine,if_exists="append",index=False,chunksize=200)
+   availability_df.to_sql(name="property_availability",con=engine,if_exists="append",index=False,chunksize=2000)
+   reviews_df.to_sql(name="property_reviews",con=engine,if_exists="append",index=False,chunksize=2000)
    ~~~~
