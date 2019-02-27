@@ -1,31 +1,14 @@
--- create database
-CREATE DATABASE seattle_airbnb_db;
+CREATE DATABASE IF NOT EXISTS seattle_airbnb_db;
 USE seattle_airbnb_db;
 ALTER DATABASE seattle_airbnb_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
--- optional queries to use if you need to re-run the code and drop tables
--- DROP TABLE listings;
--- DROP TABLE airbnb_hosts;
 
--- create hosts table and define each column
-CREATE TABLE airbnb_hosts(
-	host_id INT,
-    host_name VARCHAR(150),
-    host_since DATE,
-    host_location VARCHAR(150),
-    host_response_time VARCHAR(200),
-    host_response_rate INT,
-    host_acceptance_rate INT,
-    host_is_superhost BOOLEAN,
-    host_neighbourhood VARCHAR(100),
-    host_listings_count INT,
-    host_has_profile_pic BOOLEAN,
-    host_identity_verified BOOLEAN,
-    PRIMARY KEY(host_id)
-);
+DROP TABLE IF EXISTS listings;
+DROP TABLE IF EXISTS airbnb_hosts;
+DROP TABLE IF EXISTS property_availability;
+DROP TABLE IF EXISTS property_reviews;
 
--- create listings table and define each column
 CREATE TABLE listings(
-	id INT,
+    id INT,
     listing_name VARCHAR(100),
     street VARCHAR(300),
     neighbourhood_cleansed VARCHAR(150),
@@ -76,25 +59,41 @@ CREATE TABLE listings(
     require_guest_phone_verification BOOLEAN,
     reviews_per_month FlOAT,
     host_id INT,
-    PRIMARY KEY (id),
-    FOREIGN KEY (host_id) REFERENCES airbnb_hosts(host_id) ON DELETE CASCADE
-    
+    PRIMARY KEY(id)
 );
 
-SHOW TABLES;
-	
+CREATE TABLE airbnb_hosts(
+    host_id INT,
+    host_name VARCHAR(150),
+    host_since DATE,
+    host_location VARCHAR(150),
+    host_response_time VARCHAR(200),
+    host_response_rate INT,
+    host_acceptance_rate INT,
+    host_is_superhost BOOLEAN,
+    host_neighbourhood VARCHAR(100),
+    host_listings_count INT,
+    host_has_profile_pic BOOLEAN,
+    host_identity_verified BOOLEAN,
+    PRIMARY KEY(host_id)
+);
 
-SELECT
-	listings.listing_name AS "Listing Name",
-    listings.bedrooms AS "Bedrooms",
-    listings.bathrooms AS "Bathrooms",
-    airbnb_hosts.host_name AS "Host Name",
-    airbnb_hosts.host_response_rate AS "Host Response Rate"
-FROM
-	listings
-LEFT JOIN
-	airbnb_hosts
-ON
-	listings.host_id = airbnb_hosts.host_id;
-    
-    
+CREATE TABLE property_availability(
+    id INT NOT NULL AUTO_INCREMENT,
+    listing_id INT,
+    available_date DATE,
+    available BOOLEAN,
+    price FLOAT,
+    PRIMARY KEY(id)
+);
+
+CREATE TABLE property_reviews(
+   id INT NOT NULL AUTO_INCREMENT,
+   review_id INT,
+   listing_id INT,
+   review_date DATE,
+   reviewer_id INT,
+   reviewer_name VARCHAR(100),
+   comments MEDIUMTEXT,
+   PRIMARY KEY(id)
+);
