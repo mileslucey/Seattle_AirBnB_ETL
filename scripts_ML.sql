@@ -1,8 +1,29 @@
+-- create database
 CREATE DATABASE seattle_airbnb_db;
 USE seattle_airbnb_db;
 ALTER DATABASE seattle_airbnb_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-DROP TABLE listings;
-DROP TABLE airbnb_hosts;
+-- optional queries to use if you need to re-run the code and drop tables
+-- DROP TABLE listings;
+-- DROP TABLE airbnb_hosts;
+
+-- create hosts table and define each column
+CREATE TABLE airbnb_hosts(
+	host_id INT,
+    host_name VARCHAR(150),
+    host_since DATE,
+    host_location VARCHAR(150),
+    host_response_time VARCHAR(200),
+    host_response_rate INT,
+    host_acceptance_rate INT,
+    host_is_superhost BOOLEAN,
+    host_neighbourhood VARCHAR(100),
+    host_listings_count INT,
+    host_has_profile_pic BOOLEAN,
+    host_identity_verified BOOLEAN,
+    PRIMARY KEY(host_id)
+);
+
+-- create listings table and define each column
 CREATE TABLE listings(
 	id INT,
     listing_name VARCHAR(100),
@@ -55,24 +76,12 @@ CREATE TABLE listings(
     require_guest_phone_verification BOOLEAN,
     reviews_per_month FlOAT,
     host_id INT,
-    PRIMARY KEY (id)
+    PRIMARY KEY (id),
+    FOREIGN KEY (host_id) REFERENCES airbnb_hosts(host_id) ON DELETE CASCADE
+    
 );
 
-CREATE TABLE airbnb_hosts(
-	host_id INT,
-    host_name VARCHAR(150),
-    host_since DATE,
-    host_location VARCHAR(150),
-    host_response_time VARCHAR(200),
-    host_response_rate INT,
-    host_acceptance_rate INT,
-    host_is_superhost BOOLEAN,
-    host_neighbourhood VARCHAR(100),
-    host_listings_count INT,
-    host_has_profile_pic BOOLEAN,
-    host_identity_verified BOOLEAN,
-    PRIMARY KEY(host_id)
-);
+SHOW TABLES;
 	
 
 SELECT
