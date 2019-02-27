@@ -18,8 +18,8 @@
     * One table with property reviews information from the reviews.csv file
 * How the tables are linked together:
     * Listings and hosts tables linked together by host_id
-    * Listings and availability tables linked together by listing_id
-    * Listings and reviews tables linked together by listing_id
+    * Listings and property availability tables linked together by listing_id
+    * Listings and property reviews tables linked together by listing_id
 ## Extract
 * Data is taken from a Kaggle web page
 * Data is extracted from the four CSV files in the "Resources" folder
