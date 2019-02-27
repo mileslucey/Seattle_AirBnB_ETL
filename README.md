@@ -59,9 +59,9 @@
    1. "drop_duplicates" to remove all duplicate entries in each dataframe
    2. ".replace" to remove all symbols from numerical columns (e.g. $,%,',', etc.)
       * This is because some of the dataframe columns are initially registered as strings rather than as numbers
-   3. ".replace. to replace "t" and "f" entries with the booleans "True" and False"
-   4. "to_datetime" to convert columns to datetime format that were being registered as strings
-   5. "to_numeric" to convert columns to numbers that were being registered as strings
+   3. ".replace." to replace "t" and "f" string entries with the booleans "True" and False"
+   4. "to_datetime" to convert columns to datetime format that are initially registered as strings
+   5. "to_numeric" to convert columns to numbers that are initially registered as strings
 * Below is the Python code to clean each of the four dataframes:
    1. listings dataframe:
    ~~~~python
