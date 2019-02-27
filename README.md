@@ -68,6 +68,31 @@
 * Below is the Python code to clean each of the four dataframes:
    1. listings dataframe:
    ~~~~python
+   # Remove duplicates
+   listing_df.drop_duplicates(keep="first",inplace=True)
+   
+   # Convert columns to datetime format
+   listing_df["first_review"]=pd.to_datetime(listing_df["first_review"])
+   listing_df["last_review"]=pd.to_datetime(listing_df["last_review"])
+   
+   # Replace columns designated as "t" or "f" as the "True" or "False" booleans
+   listing_df["is_location_exact"].replace(["t","f"],[True,False],inplace=True)
+   listing_df["has_availability"].replace(["t","f"],[True,False],inplace=True)
+   listing_df["requires_license"].replace(["t","f"],[True,False],inplace=True)
+   listing_df["instant_bookable"].replace(["t","f"],[True,False],inplace=True)
+   listing_df["require_guest_profile_picture"].replace(["t","f"],[True,False],inplace=True)
+   listing_df["require_guest_phone_verification"].replace(["t","f"],[True,False],inplace=True)
+   
+   # Convert all currency columns to numeric values
+   currency_cols=["price","weekly_price","monthly_price","security_deposit","cleaning_fee","extra_people"]
+   listing_df[currency_cols]=listing_df[currency_cols].replace({'\$': '', ',': ''}, regex=True)
+   listing_df["price"] = pd.to_numeric(listing_df["price"])
+   listing_df["weekly_price"] = pd.to_numeric(listing_df["weekly_price"])
+   listing_df["monthly_price"] = pd.to_numeric(listing_df["monthly_price"])
+   listing_df["security_deposit"] = pd.to_numeric(listing_df["security_deposit"])
+   listing_df["cleaning_fee"] = pd.to_numeric(listing_df["cleaning_fee"])
+   listing_df["extra_people"] = pd.to_numeric(listing_df["extra_people"])
+   
    ~~~~
    2. hosts dataframe:
    ~~~~python
