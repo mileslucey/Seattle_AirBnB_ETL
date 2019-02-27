@@ -134,8 +134,14 @@
 * In MySQL, we followed the steps below:
 	* Use a SQL script to establish the database:
   ~~~~sql
-  CREATE DATABASE seattle_airbnb_db;
+  CREATE DATABASE IF NOT EXISTS seattle_airbnb_db;
   USE seattle_airbnb_db;
+  ALTER DATABASE seattle_airbnb_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+  
+  DROP TABLE IF EXISTS property_availability;
+  DROP TABLE IF EXISTS property_reviews;
+  DROP TABLE IF EXISTS listings;
+  DROP TABLE IF EXISTS airbnb_hosts;
   ~~~~
 	* In the AirBnB database, create the four separate tables:
 	1. Hosts table
