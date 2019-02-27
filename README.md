@@ -92,10 +92,25 @@
    listing_df["security_deposit"] = pd.to_numeric(listing_df["security_deposit"])
    listing_df["cleaning_fee"] = pd.to_numeric(listing_df["cleaning_fee"])
    listing_df["extra_people"] = pd.to_numeric(listing_df["extra_people"])
-   
    ~~~~
    2. hosts dataframe:
    ~~~~python
+   # Remove duplicates
+   host_df.drop_duplicates(keep="first",inplace=True)
+   
+   # Convert columns to datetime format
+   host_df["host_since"]=pd.to_datetime(host_df["host_since"])
+   
+   # Replace columns designated as "t" or "f" as the "True" or "False" booleans
+   host_df["host_is_superhost"].replace(["t","f"],[True,False],inplace=True)
+   host_df["host_has_profile_pic"].replace(["t","f"],[True,False],inplace=True)
+   host_df["host_identity_verified"].replace(["t","f"],[True,False],inplace=True)
+   
+   # Convert all percentage columns to numeric values
+   host_df["host_response_rate"]=host_df["host_response_rate"].replace({'\$': '', ',': '', '%':''}, regex=True)
+   host_df["host_acceptance_rate"]=host_df["host_acceptance_rate"].replace({'\$': '', ',': '', '%':''}, regex=True)
+   host_df["host_response_rate"] = pd.to_numeric(host_df["host_response_rate"])
+   host_df["host_acceptance_rate"] = pd.to_numeric(host_df["host_acceptance_rate"])
    ~~~~
    3. calendar dataframe:
    ~~~~python
@@ -105,13 +120,16 @@
    ~~~~
 ## Load
 ### SQL -- Creating the Schema
-* Use a SQL script to establish the database:
+* We chose AirBnB data because we are interested in studying data from Bay Area companies that are market disrupters. Additionally, we are all interested in studying the "sharing economy". 
+* This analysis creates a schema consisting of four tables (listings, hosts, calendar, and reviews). We think this is the best way to divide the data because each table has its own unique focus, each table cannot really divided into smaller tables (e.g. smaller tables that are equally distinct and have fewer rows than before), and it is an intuitive way of dividing information for people who may use the data.
+* We chose a relational database structure because we wanted our data to have a strict structure and to be very consistent. We also wanted the database to be easy to update if needed. Lastly, we wanted to minimize redundancy and to make sure not to have multiple columns displaying the same information.
+* In MySQL, we followed the steps below:
+	* Use a SQL script to establish the database:
   ~~~~sql
   CREATE DATABASE seattle_airbnb_db;
   USE seattle_airbnb_db;
   ~~~~
-* In the AirBnB database, create the four separate tables:
-   
+	* In the AirBnB database, create the four separate tables:
 	1. Hosts table
    ~~~~sql
    CREATE TABLE airbnb_hosts(
