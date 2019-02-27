@@ -1,27 +1,29 @@
-# Seattle AirBnB ETL Project Proposal
+# Seattle AirBnB ETL Project
 ## Background Information
 ### Team Members
 * Shannon Chang
 * Madeleine Merken
 * Miles Lucey
-### Data Sources
+### Data Source
+* Kaggle: https://www.kaggle.com/airbnb/seattle
+### Data Files
 * One listings.csv file that contains AirBnB listing information and AirBnB host information
 * One calendar.csv file that contains property availability information throughout the year
 * One reviews.csv file that contains AirBnB property reviews information
-### Data Source
-* Kaggle: https://www.kaggle.com/airbnb/seattle
 ### Idea for Relational Database Schema
 * Four tables:
     * One table for listings information from the listings.csv file
     * One table with hosts information from the listings.csv file
     * One table with property availability information from the calendar.csv file
     * One table with property reviews information from the reviews.csv file
-* How the tables will be linked together:
+* How the tables are linked together:
     * Listings and hosts tables linked together by host_id
     * Listings and availability tables linked together by listing_id
     * Listings and reviews tables linked together by listing_id
 ## Extract
-* Python is used to extract data from four CSV files (each in the "Resources" folder).
+* Data is taken from a Kaggle web page
+* Data is extracted from the four CSV files in the "Resources" folder
+* Python code to extract data from the CSV files:
 1. listings.csv
    ~~~~python
    listing_host_csv = "Resources/listings.csv"
@@ -38,7 +40,7 @@
    reviews_df = pd.read_csv(reviews_csv,encoding="utf8")
    ~~~~
 ## Transform 
-* Python is used to separate the listing_host_df into two dataframes; One for listings and one for host information:
+* Python code to separate the listing_host_df into two dataframes; One dataframe for listings and one dataframe for host information:
    * listings dataframe:
       ~~~~python
       listing_df = listing_host_df[["id","listing_name","street","neighbourhood_cleansed","neighbourhood_group_cleansed","city","state","zipcode","latitude","longitude","is_location_exact","property_type","room_type","accommodates","bathrooms","bedrooms","beds","bed_type","square_feet","price","weekly_price","monthly_price","security_deposit","cleaning_fee","guests_included","extra_people","minimum_nights","maximum_nights","has_availability","availability_30","availability_60","availability_90","availability_365","number_of_reviews","first_review","last_review","review_scores_rating","review_scores_accuracy","review_scores_cleanliness","review_scores_checkin","review_scores_communication","review_scores_location","review_scores_value","requires_license","instant_bookable","cancellation_policy","require_guest_profile_picture","require_guest_phone_verification","reviews_per_month","host_id"]].copy()
@@ -47,11 +49,11 @@
       ~~~~python
       host_df = listing_host_df[["host_id","host_name","host_since","host_location","host_response_time","host_response_rate","host_acceptance_rate","host_is_superhost","host_neighbourhood","host_listings_count","host_has_profile_pic","host_identity_verified"]].copy()
      ~~~~
-* Python is used to create the calendar dataframe:
+* Python code to create the calendar dataframe:
      ~~~~python
    INSERT CODE HERE
      ~~~~
-* Python is used to create the reviews dataframe:
+* Python code to create the reviews dataframe:
      ~~~~python
    INSERT CODE HERE
      ~~~~
@@ -63,6 +65,19 @@
    3. ".replace. to replace "t" and "f" entries with the booleans "True" and False"
    4. "to_datetime" to convert columns to datetime format that were being registered as strings
    5. "to_numeric" to convert columns to numbers that were being registered as strings
+* Below is the Python code to clean each of the four dataframes:
+   1. listings dataframe:
+   ~~~~python
+   ~~~~
+   2. hosts dataframe:
+   ~~~~python
+   ~~~~
+   3. calendar dataframe:
+   ~~~~python
+   ~~~~
+   4. reviews dataframe:
+   ~~~~python
+   ~~~~
 ## Load
 ### SQL -- Creating the Schema
 * Use a SQL script to establish the database:
