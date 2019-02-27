@@ -165,6 +165,8 @@
    engine = create_engine(f"mysql://{rds_connection_string}?charset=utf8", encoding = "utf8")
    ~~~~
 * The engine is used to populate all the SQL tables
-   * host_df.to_sql(name="airbnb_hosts",con=engine,if_exists="append",index=False)
-   * listing_df.to_sql(name="listings",con=engine,if_exists="append",index=False)
-   * ADD THE REST OF CODE LATER
+   ~~~~python
+   host_df.to_sql(name="airbnb_hosts",con=engine,if_exists="append",index=False)
+   listing_df.to_sql(name="listings",con=engine,if_exists="append",index=False)
+   ADD THE REST OF CODE LATER
+   ~~~~
