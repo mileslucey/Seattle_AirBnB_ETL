@@ -121,7 +121,7 @@
 ## Load
 ### SQL -- Creating the Schema
 * We chose AirBnB data because we are interested in studying data from Bay Area companies that are market disrupters. Additionally, we are all interested in studying the "sharing economy". 
-* This analysis creates a schema consisting of four tables (listings, hosts, calendar, and reviews). We think this is the best way to divide the data because each table has its own unique focus, each table cannot really divided into smaller tables (e.g. smaller tables that are equally distinct and have fewer rows than before), and it is an intuitive way of dividing information for people who may use the data.
+* This analysis creates a schema consisting of four tables (listings, hosts, calendar, and reviews). We think this is the best way to divide the data because each table has its own unique focus, each table cannot really be divided into smaller tables (i.e. smaller tables that are equally distinct and have fewer rows than before), and it is an intuitive way of dividing information for people who may use the data in the future.
 * We chose a relational database structure because we wanted our data to have a strict structure and to be very consistent. We also wanted the database to be easy to update if needed. Lastly, we wanted to minimize redundancy and to make sure not to have multiple columns displaying the same information.
 * In MySQL, we followed the steps below:
 	* Use a SQL script to establish the database:
@@ -217,7 +217,7 @@
    ~~~~
 
 ### Python -- Connecting to MySQL database and adding in the data
-* A MySQL database connection is created and an engine is created in Python:
+* A MySQL database connection is created and an engine is created in Python (**if reproducing, make sure to add in the appropriate computer password**):
    ~~~~python
    rds_connection_string = "root:<PASSWORD HERE>@127.0.0.1/seattle_airbnb_db"
    engine = create_engine(f"mysql://{rds_connection_string}?charset=utf8", encoding = "utf8")
