@@ -256,7 +256,10 @@
 * The engine is used to populate all the SQL tables
    ~~~~python
    host_df.to_sql(name="airbnb_hosts",con=engine,if_exists="append",index=False,chunksize=2000)
+   
    listing_df.to_sql(name="listings",con=engine,if_exists="append",index=False,chunksize=200)
+   
    availability_df.to_sql(name="property_availability",con=engine,if_exists="append",index=False,chunksize=2000)
+   
    reviews_df.to_sql(name="property_reviews",con=engine,if_exists="append",index=False,chunksize=2000)
    ~~~~
