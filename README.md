@@ -21,7 +21,7 @@
     * Listings and property availability tables linked together by listing_id
     * Listings and property reviews tables linked together by listing_id
 ## Extract
-* Data is taken from a Kaggle web page
+* CSV files are taken from a Kaggle web page
 * Data is extracted from the four CSV files in the "Resources" folder
 * Python code to extract data from the CSV files:
 1. listings.csv
