@@ -23,7 +23,7 @@
 ## Extract
 * CSV files are taken from a Kaggle web page and saved in the "Resources" folder
 * Data is extracted from the four CSV files in the "Resources" folder
-* Python code to extract data from the CSV files:
+* Python code to extract data from the CSV files is listed below:
 1. listings.csv
    ~~~~python
    listing_host_csv = "Resources/listings.csv"
