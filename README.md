@@ -269,6 +269,6 @@
 		* Price of listings: Do superhosts or other hosts have more expensive listings?
 		* Neighborhoods: Which neighborhoods do superhosts tend to be in?
 		* Bedrooms and bathrooms: Do superhosts or other hosts tend to have properties with more bedrooms and bathrooms?
-		* *We think exploring the differences between superhosts and regular hosts would be interesting an interesting analysis. Superhosts become selected as superhosts due to their high ratings, large quantities of property reservations, and minimal cancellations. It would be interesting to find out having high ratings, a lot of reservations, and minimal cancellations tends to be associated with upscale neighborhoods in Seattle, price of listings, larger properties, etc.*   
+		* **We think exploring the differences between superhosts and regular hosts would be interesting an interesting analysis. Superhosts become selected as superhosts due to their high ratings, large quantities of property reservations, and minimal cancellations. It would be interesting to find out having high ratings, a lot of reservations, and minimal cancellations tends to be associated with upscale neighborhoods in Seattle, price of listings, larger properties, etc.**   
 	* Exploring the impact 
 		
