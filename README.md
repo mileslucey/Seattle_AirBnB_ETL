@@ -263,7 +263,7 @@
    
    reviews_df.to_sql(name="property_reviews",con=engine,if_exists="append",index=False,chunksize=2000)
    ~~~~
-## Ideas for Future Analysis
+## Conclusion / Ideas for Future Analysis
 * The AirBnB data is very comprehensive. In the future, it could be used to conduct a variety of analyses. The following ideas come to mind:
 	* Exploring the differences between superhosts and other hosts across a variety of metrics. For example:
 		* Price of listings: Do superhosts or other hosts have more expensive listings?
