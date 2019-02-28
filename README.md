@@ -215,7 +215,7 @@
     	cancellation_policy VARCHAR(200),
     	require_guest_profile_picture BOOLEAN,
     	require_guest_phone_verification BOOLEAN,
-    	reviews_per_month FlOAT,
+    	reviews_per_month FLOAT,
     	host_id INT,
     	PRIMARY KEY(id),
     	FOREIGN KEY(host_id) REFERENCES airbnb_hosts(host_id) ON DELETE CASCADE
@@ -263,3 +263,25 @@
    
    reviews_df.to_sql(name="property_reviews",con=engine,if_exists="append",index=False,chunksize=2000)
    ~~~~
+## Conclusion / Ideas for Future Analysis
+* The AirBnB data is very comprehensive. In the future, it could be used to conduct a variety of analyses. The following ideas come to mind:
+	* Exploring the differences between superhosts and other hosts across a variety of metrics. For example:
+		* Price of listings: Do superhosts or other hosts have more expensive listings?
+		* Neighborhoods: Which Seattle neighborhoods do superhosts tend to have properties in?
+		* Bedrooms and bathrooms: Do superhosts or other hosts tend to have properties with more bedrooms and bathrooms?
+		* Profile picture: Are superhosts more or less likely to have profile pictures?
+		* **We think exploring the differences between superhosts and regular hosts would be an interesting analysis. Superhosts become selected as superhosts due to their high ratings, large quantities of property reservations, and minimal cancellations. It would be interesting to find out if those superhosts are associated with certain Seattle neighborhoods, high or low prices of listings, larger or smaller properties, etc.**   
+	* Exploring trends in property ratings. For example:
+		* Price of listings: Do high reviews tend to be associated with more expensive or less expensive listings?
+		* Neighborhoods: Which Seattle neighborhoods have the highest reviewed properties?
+		* Bedrooms and bathrooms: Do higher rated properties tend to be larger or smaller?
+		* Availability of listings: Do higher rated properties tend to have less availability than lower rated properties?
+		* **We think exploring trends in differences between highly rated properties and lowly rated properties would help us paint a picture of the types of listings that Airbnb customers like. Are highly rated listings larger, more expensive, concentrated in certain neighborhoods, etc.?**
+	* Examining property availability across a variety of metrics. For example:
+		* Security deposit: Do properties that require guests to leave security deposits tend to have more or less availability than properties that do not have that requirement?
+		* Requires license: Do properties that require guests to show their IDs tend to have more or less availability than properties that do not have that requirement?
+		* Number of reviews: Is having a lot of reviews associated with properties that tend to not have much availability? Or with properties that have a lot of availability?
+		* Price: Do cheaper properties tend to have more or less availability than more expensive properties?
+		* **We think it would be interesting to observe the factors that are associated with properties that have a lot and a little availability because it would help us gain insight into travelers' buying habits. Are security deposits and license requirements inconveniences for consumers and thus make certain properties less popular? Does having a lot of reviews make listings appear more trustworthy and therefore leads more travelers to book certain properties? Are travelers super price sensitive and are they more or less likely to book cheaper properties?**
+		
+		
