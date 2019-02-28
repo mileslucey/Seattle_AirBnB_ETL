@@ -215,7 +215,7 @@
     	cancellation_policy VARCHAR(200),
     	require_guest_profile_picture BOOLEAN,
     	require_guest_phone_verification BOOLEAN,
-    	reviews_per_month FlOAT,
+    	reviews_per_month FLOAT,
     	host_id INT,
     	PRIMARY KEY(id),
     	FOREIGN KEY(host_id) REFERENCES airbnb_hosts(host_id) ON DELETE CASCADE
