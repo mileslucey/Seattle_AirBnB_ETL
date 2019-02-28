@@ -263,3 +263,12 @@
    
    reviews_df.to_sql(name="property_reviews",con=engine,if_exists="append",index=False,chunksize=2000)
    ~~~~
+## Ideas for Future Analysis
+* The AirBnB data is very comprehensive. In the future, it could be used to conduct a variety of analyses. The following ideas come to mind:
+	* Exploring the differences between superhosts and other hosts across a variety of metrics. For example:
+		* Price of listings: Do superhosts or other hosts have more expensive listings?
+		* Neighborhoods: Which neighborhoods do superhosts tend to be in?
+		* Bedrooms and bathrooms: Do superhosts or other hosts tend to have properties with more bedrooms and bathrooms?
+		* *We think exploring the differences between superhosts and regular hosts would be interesting an interesting analysis. Superhosts become selected as superhosts due to their high ratings, large quantities of property reservations, and minimal cancellations. It would be interesting to find out having high ratings, a lot of reservations, and minimal cancellations tends to be associated with upscale neighborhoods in Seattle, price of listings, larger properties, etc.*   
+	* Exploring the impact 
+		
