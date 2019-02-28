@@ -276,5 +276,10 @@
 		* Neighborhoods: Which neighborhoods have the highest reviewed properties?
 		* Bedrooms and bathrooms: Do higher rated properties tend to be larger or smaller?
 		* **We think exploring trends in differences between highly rated properties and lowly rated properties, would help us paint a picture of the types of listings that Airbnb customers like. Are highly-rated listings larger, more expensive, concentrated in certain neighborhoods, etc.?**
-	* 
+	* Examining property availability across a variety of metrics. For example:
+		* Security deposit: Do properties that require guests to leave security deposits tend to have more or less availability than properties that don't?
+		* Requires license: Do properties that require guests to show their ID tend to have more or less availability than properties that don't?
+		* Number of reviews: Is having a lot of reviews associated with properties that tend to not have much availability (since the properties are popular and tend to fill up)?
+		* Price: Do properties that are cheaper tend to have less availability than properties that are more expensive?
+		* **We think it would be interesting to observe the factors that are associated with properties that have a lot and a little availability because it would help us gain insight into travelers' buying habits. Are security deposits and license requirements inconveniences for consumers and thus make properties less popular? Does having a lot of reviews make listings more popular and thus the listings tend to have less availability? Does price make a big impact on listing popularity?
 		
