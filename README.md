@@ -1,4 +1,4 @@
-# Seattle AirBnB ETL Project
+# Seattle Airbnb ETL Project
 ## Background Information
 ### Team Members
 * Shannon Chang
@@ -7,9 +7,9 @@
 ### Data Source
 * Kaggle: https://www.kaggle.com/airbnb/seattle
 ### Data Files
-* One listings.csv file that contains AirBnB listing information and AirBnB host information
+* One listings.csv file that contains Airbnb listing information and Airbnb host information
 * One calendar.csv file that contains property availability information throughout the year
-* One reviews.csv file that contains AirBnB property reviews information
+* One reviews.csv file that contains Airbnb property reviews information
 ### Idea for Relational Database Schema
 * Four tables:
     * One table for listings information from the listings.csv file
@@ -128,7 +128,7 @@
    ~~~~
 ## Load
 ### SQL -- Creating the Schema
-* We choose AirBnB data because we are interested in studying data from Bay Area companies that are market disrupters. Additionally, we are interested in studying the sharing economy, an economy in which AirBnB is a key player. 
+* We choose Airbnb data because we are interested in studying data from Bay Area companies that are market disrupters. Additionally, we are interested in studying the sharing economy, an economy in which Airbnb is a key player. 
 * This analysis creates a schema consisting of four tables (listings, hosts, property availability, and property reviews). We think this is the best way to divide the data because each table has its own unique focus, each table cannot really be divided into smaller tables (i.e. tables that are equally distinct and have fewer rows than before), and it is an intuitive way of dividing information for people who may use the data in the future.
 * We choose a relational database structure because we want the data to have a strict structure and to be very consistent across all columns. We also want the database to be easy to update if needed. Lastly, we want to minimize redundancy and to make sure to not have multiple columns displaying the same information.
 * In MySQL, we follow the following steps to create the schema:
@@ -143,7 +143,7 @@
   DROP TABLE IF EXISTS listings;
   DROP TABLE IF EXISTS airbnb_hosts;
   ~~~~
-	* In the AirBnB database, create the four separate tables:
+	* In the Airbnb database, create the four separate tables:
 	1. Hosts table
    ~~~~sql
    CREATE TABLE airbnb_hosts(
@@ -264,7 +264,7 @@
    reviews_df.to_sql(name="property_reviews",con=engine,if_exists="append",index=False,chunksize=2000)
    ~~~~
 ## Conclusion / Ideas for Future Analysis
-* The AirBnB data is very comprehensive. In the future, it could be used to conduct a variety of analyses. The following ideas come to mind:
+* The Airbnb data is very comprehensive. In the future, it could be used to conduct a variety of analyses. The following ideas come to mind:
 	* Exploring the differences between superhosts and other hosts across a variety of metrics. For example:
 		* Price of listings: Do superhosts or other hosts have more expensive listings?
 		* Neighborhoods: Which Seattle neighborhoods do superhosts tend to have properties in?
